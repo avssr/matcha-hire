@@ -33,10 +33,10 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link 
-                  href="/auth/signup"
+                  href="/company/roles/new"
                   className="group px-8 py-4 bg-matchaVibrant-500 hover:bg-matchaVibrant-400 text-white rounded-xl font-medium transition-all duration-300 flex items-center"
                 >
-                  <span>Start Hiring</span>
+                  <span>Post a Role</span>
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link 
@@ -214,10 +214,10 @@ export default function Home() {
           <div className="text-center">
             <div className="flex flex-wrap gap-4 justify-center">
               <Link 
-                href="/auth/signup"
+                href="/company/roles/new"
                 className="group px-8 py-4 bg-matchaVibrant-600 hover:bg-matchaVibrant-500 text-white rounded-xl font-medium transition-all duration-300 flex items-center"
               >
-                <span>Get Started</span>
+                <span>Post a Role</span>
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
@@ -243,10 +243,10 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link 
-              href="/auth/signup"
+              href="/company/roles/new"
               className="group px-8 py-4 bg-white text-matchaVibrant-900 rounded-xl font-medium hover:bg-matchaVibrant-50 transition-all duration-300 flex items-center"
             >
-              <span>Start Hiring</span>
+              <span>Post a Role</span>
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
