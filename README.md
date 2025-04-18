@@ -1,65 +1,130 @@
 # MatchaHire
 
-MatchaHire is a minimal, clean, AI-powered hiring platform that replaces traditional job descriptions with interactive AI personas.
+AI-powered hiring platform that connects talented professionals with mission-driven companies.
 
-## Features
+## Quick Start
 
-- Interactive AI personas for each role
-- Smart question-answering via chat
-- Resume upload and analysis
-- Automated scoring and summaries
-- Simple admin dashboard
-- Email notifications
+### Prerequisites
 
-## Tech Stack
+- Docker and Docker Compose
+- Node.js 18+
+- Git
 
-- Next.js (App Router)
-- TypeScript
-- TailwindCSS
-- Supabase (Database & Storage)
-- OpenAI GPT-4
-- Nodemailer
+### Development Setup
 
-## Getting Started
+1. Clone the repository:
+```bash
+git clone https://github.com/avssr/matcha-hire.git
+cd matcha-hire
+```
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+2. Run the setup script:
+```bash
+chmod +x scripts/setup.sh
+./scripts/setup.sh
+```
 
-3. Set up environment variables:
-   - Copy `.env.local.example` to `.env.local`
-   - Fill in your Supabase, OpenAI, and email credentials
+3. Start the development environment:
+```bash
+npm run docker:dev
+```
 
-4. Set up Supabase:
-   - Create a new project
-   - Run the SQL migrations in `supabase/migrations`
-   - Enable Storage for resume uploads
+The application will be available at http://localhost:3000
 
-5. Run the development server:
-   ```bash
-   npm run dev
-   ```
+### Environment Variables
+
+Copy `.env.example` to `.env` and update the following variables:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
 
 ## Project Structure
 
-- `src/app/` - Next.js app router pages
-- `src/components/` - Reusable UI components
-- `src/lib/` - Utility functions and configurations
-- `src/types/` - TypeScript type definitions
+```
+matchahire/
+├── src/
+│   ├── app/           # Next.js app router pages
+│   ├── components/    # Reusable components
+│   ├── lib/          # Utility functions and configurations
+│   └── types/        # TypeScript type definitions
+├── public/           # Static assets
+├── scripts/         # Development and deployment scripts
+├── supabase/        # Database migrations and seeds
+└── tests/          # Test files
+```
 
-## Database Schema
+## Development Workflow
 
-See `supabase/migrations/` for the complete database schema.
+1. Pull latest changes:
+```bash
+git pull origin main
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run database migrations:
+```bash
+npm run db:migrate
+```
+
+4. Start development server:
+```bash
+npm run dev
+```
+
+## Testing
+
+Run tests:
+```bash
+npm test
+```
+
+Watch mode:
+```bash
+npm run test:watch
+```
+
+## Database Management
+
+- Generate migration:
+```bash
+npm run db:generate
+```
+
+- Apply migrations:
+```bash
+npm run db:migrate
+```
+
+- Reset database with seed data:
+```bash
+npm run db:seed
+```
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+1. Create a new branch:
+```bash
+git checkout -b feature/your-feature-name
+```
+
+2. Make your changes and commit:
+```bash
+git add .
+git commit -m "feat: your feature description"
+```
+
+3. Push changes:
+```bash
+git push origin feature/your-feature-name
+```
+
+4. Create a Pull Request
 
 ## License
 

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - supabase
+    command: npm run dev
+
+  supabase:
+    image: supabase/supabase-local
+    ports:
+      - "54321:54321"
+      - "54322:54322"
+    environment:
+      POSTGRES_PASSWORD: your-super-secret-password
+      JWT_SECRET: your-super-secret-jwt-token
+      DASHBOARD_USERNAME: admin
+      DASHBOARD_PASSWORD: admin
+
+  # Add Redis for caching (optional but recommended for production)
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data: 

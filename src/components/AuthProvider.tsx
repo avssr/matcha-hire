@@ -28,28 +28,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const supabase = createClientComponentClient()
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null)
       setLoading(false)
 
       if (event === 'SIGNED_IN' && session?.user) {
         // Check if user has a company
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('company, role')
-          .eq('id', session.user.id)
-          .single()
+        const checkCompany = async () => {
+          const { data: userData } = await supabase
+            .from('users')
+            .select('company_id')
+            .eq('id', session.user.id)
+            .single()
 
-        if (!profile?.company) {
-          // User is a candidate
-          router.push('/roles')
-        } else if (profile.role === 'admin') {
-          // User is a company admin
-          router.push('/company/dashboard')
-        } else {
-          // User is a company member
-          router.push('/company/team')
+          if (!userData?.company_id) {
+            router.push('/onboarding')
+          } else {
+            router.push('/admin/dashboard')
+          }
         }
+        checkCompany()
       }
     })
 

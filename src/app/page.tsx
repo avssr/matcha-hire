@@ -1,52 +1,106 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { MessageSquare, Users, Briefcase, Sparkles, Target, Zap, ArrowRight, Building2, Search, Heart, MapPin, Clock, IndianRupee, BarChart2 } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Sparkles, Target, Zap, Building2, MapPin, Clock, IndianRupee, GraduationCap } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative isolate">
-        <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-          <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-matchaVibrant-900 via-matchaVibrant-800 to-matchaVibrant-700">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-10" />
         </div>
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Find Champions. Build Champions.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              MatchaHire connects exceptional, driven candidates with companies looking for their next champions. Our AI-powered platform helps you discover roles that match your potential and companies find talent that will drive their mission forward.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                href="/roles"
-                className="rounded-md bg-matchaVibrant-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-matchaVibrant-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-matchaVibrant-600"
-              >
-                Find Your Next Challenge
-              </Link>
-              <Link
-                href="/company/setup"
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                List Your Roles <span aria-hidden="true">→</span>
-              </Link>
-            </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-white"
+            >
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight font-clash">
+                Find Your Next<br />
+                <span className="text-matchaVibrant-300">Champion</span>
+              </h1>
+              <p className="text-xl text-matchaVibrant-100 mb-8 font-satoshi">
+                Connect with exceptional talent through AI-powered conversations. 
+                Let candidates showcase their potential beyond resumes.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link 
+                  href="/auth/signup"
+                  className="group px-8 py-4 bg-matchaVibrant-500 hover:bg-matchaVibrant-400 text-white rounded-xl font-medium transition-all duration-300 flex items-center"
+                >
+                  <span>Start Hiring</span>
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link 
+                  href="/roles"
+                  className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-medium transition-all duration-300"
+                >
+                  Browse Roles
+                </Link>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="absolute -top-8 -right-8 w-64 h-64 bg-matchaVibrant-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
+              <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-matchaVibrant-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
+              <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-matchaVibrant-500 rounded-lg flex items-center justify-center">
+                      <Sparkles className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">AI-Powered Screening</h3>
+                      <p className="text-matchaVibrant-100">Evaluate candidates holistically</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-matchaVibrant-500 rounded-lg flex items-center justify-center">
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">Smart Personas</h3>
+                      <p className="text-matchaVibrant-100">Custom interview experiences</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-matchaVibrant-500 rounded-lg flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">Fast-Track Hiring</h3>
+                      <p className="text-matchaVibrant-100">Streamlined candidate evaluation</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Featured Roles Section */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4 font-clash">
-              Featured Opportunities
+              Open Roles
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto font-satoshi">
-              Discover roles where you can make an impact and grow your career.
+              Discover opportunities at forward-thinking companies. Apply through our AI-powered chat or traditional resume upload.
             </p>
           </div>
 
@@ -70,7 +124,7 @@ export default function Home() {
                         </div>
                       </div>
                       <span className="px-3 py-1 text-xs font-medium text-matchaVibrant-600 bg-matchaVibrant-50 rounded-full">
-                        New
+                        💬 Chat
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -94,9 +148,12 @@ export default function Home() {
                       >
                         View Details
                       </Link>
-                      <button className="text-sm px-4 py-2 bg-matchaVibrant-600 text-white rounded-lg hover:bg-matchaVibrant-700 transition-colors">
-                        Get Matched
-                      </button>
+                      <Link 
+                        href="/roles/apply"
+                        className="text-sm px-4 py-2 bg-matchaVibrant-600 text-white rounded-lg hover:bg-matchaVibrant-700 transition-colors"
+                      >
+                        Apply Now
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -107,139 +164,100 @@ export default function Home() {
       </section>
 
       {/* For Companies Section */}
-      <div className="relative isolate bg-gray-50 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">For Companies & HR Teams</h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Find your next champions - candidates who will drive your mission forward. Our AI-powered platform helps you identify and engage with exceptional talent who are ready to make an impact.
-            </p>
-          </div>
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            <div className="flex flex-col gap-4 rounded-2xl bg-white p-8 ring-1 ring-gray-200">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-matchaVibrant-600">
-                <Sparkles className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold leading-7 text-gray-900">AI-Powered Screening</h3>
-              <p className="text-base leading-7 text-gray-600">
-                Our intelligent screening process helps you identify top candidates quickly and efficiently.
-              </p>
-              <Link
-                href="/company/setup"
-                className="text-sm font-semibold leading-6 text-matchaVibrant-600"
-              >
-                Get Started <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-            <div className="flex flex-col gap-4 rounded-2xl bg-white p-8 ring-1 ring-gray-200">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-matchaVibrant-600">
-                <MessageSquare className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold leading-7 text-gray-900">Smart Interview Bot</h3>
-              <p className="text-base leading-7 text-gray-600">
-                Engage candidates with our AI interview bot that provides consistent, unbiased assessments.
-              </p>
-              <Link
-                href="/company/setup"
-                className="text-sm font-semibold leading-6 text-matchaVibrant-600"
-              >
-                Learn More <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-            <div className="flex flex-col gap-4 rounded-2xl bg-white p-8 ring-1 ring-gray-200">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-matchaVibrant-600">
-                <BarChart2 className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold leading-7 text-gray-900">Analytics Dashboard</h3>
-              <p className="text-base leading-7 text-gray-600">
-                Track your hiring metrics and make data-driven decisions with our comprehensive analytics.
-              </p>
-              <Link
-                href="/company/setup"
-                className="text-sm font-semibold leading-6 text-matchaVibrant-600"
-              >
-                View Demo <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-24 bg-white">
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/dots.svg')] bg-center opacity-5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
+            <span className="text-matchaVibrant-600 font-medium mb-2 inline-block">FOR COMPANIES</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4 font-clash">
-              How MatchaHire Works
+              Transform Your Hiring
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto font-satoshi">
-              A smarter way to connect exceptional talent with mission-driven companies.
+              Create engaging role experiences that attract top talent. Our AI-powered platform helps you evaluate candidates beyond their resumes.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
               {
-                title: "Discover",
-                description: "Find roles that match your potential and companies that value your drive. Our AI helps surface opportunities where you can make an impact.",
-                icon: Search
+                title: "Smart Personas",
+                description: "Create custom interview experiences that showcase your company culture and role requirements.",
+                icon: Sparkles
               },
               {
-                title: "Connect",
-                description: "Engage with companies through our AI-powered platform. Get deep insights about their mission, culture, and growth opportunities.",
-                icon: Heart
-              },
-              {
-                title: "Grow",
-                description: "Join organizations that recognize your potential. Make an impact from day one and grow with companies that invest in their champions.",
+                title: "AI-Powered Screening",
+                description: "Evaluate candidates holistically through natural conversations and structured assessments.",
                 icon: Zap
+              },
+              {
+                title: "Streamlined Process",
+                description: "Manage your hiring pipeline with our intuitive dashboard and automated workflows.",
+                icon: Target
               }
-            ].map((step, index) => (
+            ].map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
+                className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
               >
                 <div className="w-12 h-12 bg-matchaVibrant-50 rounded-lg flex items-center justify-center mb-6">
-                  <step.icon className="w-6 h-6 text-matchaVibrant-600" />
+                  <feature.icon className="w-6 h-6 text-matchaVibrant-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link 
+                href="/auth/signup"
+                className="group px-8 py-4 bg-matchaVibrant-600 hover:bg-matchaVibrant-500 text-white rounded-xl font-medium transition-all duration-300 flex items-center"
+              >
+                <span>Get Started</span>
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link 
+                href="/company/demo"
+                className="px-8 py-4 bg-matchaVibrant-50 hover:bg-matchaVibrant-100 text-matchaVibrant-600 rounded-xl font-medium transition-all duration-300"
+              >
+                Request Demo
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-matchaVibrant-900 to-matchaVibrant-800">
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-matchaVibrant-900 to-matchaVibrant-800 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-10" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6 font-clash">
-            Ready to Find Your Next Champion?
+            Ready to Transform Hiring?
           </h2>
           <p className="text-xl text-matchaVibrant-100 mb-8 max-w-2xl mx-auto font-satoshi">
-            Whether you're a driven professional seeking your next challenge or a company looking for exceptional talent, MatchaHire helps you make the right connection.
+            Join forward-thinking companies who are reimagining how they connect with exceptional talent.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link 
-              href="/roles"
-              className="inline-flex items-center px-8 py-4 bg-white text-matchaVibrant-900 rounded-xl font-medium hover:bg-matchaVibrant-100 transition-all duration-300"
+              href="/auth/signup"
+              className="group px-8 py-4 bg-white text-matchaVibrant-900 rounded-xl font-medium hover:bg-matchaVibrant-50 transition-all duration-300 flex items-center"
             >
-              <span>Find Your Next Challenge</span>
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <span>Start Hiring</span>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
-              href="/company/setup"
-              className="inline-flex items-center px-8 py-4 bg-matchaVibrant-500 text-white rounded-xl font-medium hover:bg-matchaVibrant-400 transition-all duration-300"
+              href="/roles"
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-medium transition-all duration-300"
             >
-              <span>List Your Roles</span>
-              <ArrowRight className="w-5 h-5 ml-2" />
+              Browse Roles
             </Link>
           </div>
         </div>
       </section>
     </div>
   )
-} 
+}
